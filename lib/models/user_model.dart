@@ -4,58 +4,59 @@ import 'package:api_1/models/user_bank_model.dart';
 import 'package:api_1/models/user_crypto_model.dart';
 
 class UsersModel {
-  int? id;
+  num? id;
   String? firstName;
   String? lastName;
   String? maidenName;
-  int? age;
+  num? age;
   String? gender;
   String? email;
   String? phone;
   String? username;
   String? password;
-  String? birthDate;
+  DateTime? birthDate;
   String? image;
   String? bloodGroup;
-  String? height;
-  String? weight;
+  num? height;
+  num? weight;
   String? eyeColor;
-  List<UserHairModel>? hair;
+  UserHairModel? hair;
   String? domain;
   String? ip;
-  List<UserAddressModel>? address;
+  UserAddressModel? address;
   String? macAddress;
   String? university;
-  List<UserBank>? bank;
-  List<UserCryptoModel>? crypto;
+  UserBank? bank;
+  UserCryptoModel? crypto;
 
+  UsersModel(
+      {required this.id,
+      required this.firstName,
+      required this.lastName,
+      required this.maidenName,
+      required this.age,
+      required this.gender,
+      required this.email,
+      required this.phone,
+      required this.username,
+      required this.password,
+      required this.birthDate,
+      required this.image,
+      required this.bloodGroup,
+      required this.height,
+      required this.weight,
+      required this.eyeColor,
+      required this.hair,
+      required this.domain,
+      required this.ip,
+      required this.address,
+      required this.macAddress,
+      required this.university,
+      required this.bank,
+      required this.crypto
+  });
 
-  UsersModel({required this.id,
-    required this.firstName,
-    required this.lastName,
-    required this.maidenName,
-    required this.age,
-    required this.gender,
-    required this.email,
-    required this.phone,
-    required this.username,
-    required this.password,
-    required this.birthDate,
-    required this.image,
-    required this.bloodGroup,
-    required this.height,
-    required this.weight,
-    required this.eyeColor,
-    required this.hair,
-    required this.domain,
-    required this.ip,
-    required this.address,
-    required this.macAddress,
-    required this.university,
-    required this.bank,
-    required this.crypto});
-
-  factory UsersModel.fromJson(Map<String, dynamic>json) {
+  factory UsersModel.fromJson(Map<String, dynamic> json) {
     return UsersModel(
         id: json['id'],
         firstName: json['firstName'],
@@ -67,7 +68,7 @@ class UsersModel {
         phone: json['phone'],
         username: json['username'],
         password: json['password'],
-        birthDate: json['birthDate'],
+        birthDate: DateTime.tryParse(json['birthDate']),
         image: json['image'],
         bloodGroup: json['bloodGroup'],
         height: json['height'],
@@ -80,11 +81,6 @@ class UsersModel {
         macAddress: json['macAddress'],
         university: json['university'],
         bank: json['bank'],
-        crypto: json['crypto']
-    );
-    
-    
-    
+        crypto: json['crypto']);
   }
-
 }

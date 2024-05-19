@@ -1,3 +1,4 @@
+
 class UserHairModel{
   
   String? color;
@@ -6,10 +7,10 @@ class UserHairModel{
   UserHairModel({required this.color,required this.type});
   
   /// map to model
-  factory UserHairModel.fromJson(Map<String, dynamic> json){
+  factory UserHairModel.fromJson(Map<String, dynamic> userHairJson){
     return UserHairModel(
-        color: json['color'],
-        type: json['type']
+        color: userHairJson['color'],
+        type: userHairJson['type']
     );
   }
 }
