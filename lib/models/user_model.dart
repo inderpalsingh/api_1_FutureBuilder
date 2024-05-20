@@ -20,14 +20,14 @@ class UsersModel {
   num? height;
   num? weight;
   String? eyeColor;
-  // UserHairModel? hair;
+  UserHairModel? hair;
   String? domain;
   String? ip;
-  // UserAddressModel? address;
+  UserAddressModel? address;
   String? macAddress;
   String? university;
-  // UserBank? bank;
-  // UserCryptoModel? crypto;
+  UserBank? bank;
+  UserCryptoModel? crypto;
 
   UsersModel(
       {required this.id,
@@ -46,14 +46,14 @@ class UsersModel {
       required this.height,
       required this.weight,
       required this.eyeColor,
-      // required this.hair,
+      required this.hair,
       required this.domain,
       required this.ip,
-      // required this.address,
+      required this.address,
       required this.macAddress,
       required this.university,
-      // required this.bank,
-      // required this.crypto
+      required this.bank,
+      required this.crypto
   });
 
   factory UsersModel.fromJson(Map<String, dynamic> json) {
@@ -74,14 +74,14 @@ class UsersModel {
         height: json['height'],
         weight: json['weight'],
         eyeColor: json['eyeColor'],
-        // hair: json['hair'],
+        hair: UserHairModel.fromJson(json['hair']),
         domain: json['domain'],
         ip: json['ip'],
-        // address: json['address'],
+        address: UserAddressModel.fromJson(json['address']),
         macAddress: json['macAddress'],
         university: json['university'],
-        // bank: json['bank'],
-        // crypto: json['crypto']
+        bank: UserBank.fromJson(json['bank']),
+        crypto: UserCryptoModel.fromJson(json['crypto'])
       );
   }
 }
