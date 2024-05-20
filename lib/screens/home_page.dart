@@ -23,13 +23,32 @@ class HomePage extends StatelessWidget {
             }
             
             if(snapshot.hasData){
+
+              var mainData = snapshot.data!.users;
               
               return snapshot.data !=null ? 
-                  
-                  Column(
-                    children: [
-                      Text(snapshot.data!.users!.length.toString())
-                    ],
+                  ListView.builder(
+                    itemCount: snapshot.data!.users!.length,
+                    itemBuilder: (_, index) {
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: double.infinity,
+                              height: 200,
+                              child: CircleAvatar(child: Image.network(mainData![index].image.toString(),height: 150, width: 150)),
+                            ),
+                            const SizedBox(height: 20,),
+                            Text(mainData[index].firstName.toString(), style: const TextStyle(fontSize: 20)),
+                            Text(mainData[index].email.toString(), style: const TextStyle(fontSize: 20)),
+                            Text(mainData[index].phone.toString(), style: const TextStyle(fontSize: 20)),
+                        
+                          ],
+                        ),
+                      );
+                    },
                   )
                   
                   : const Center(child: Text('No users data!!'));
@@ -50,7 +69,7 @@ class HomePage extends StatelessWidget {
       var mData = response.body;
       
       var rawData = jsonDecode(mData);
-      print(rawData);
+      // print(rawData);
 
       userData = MainModel.fromJSON(rawData);
       
